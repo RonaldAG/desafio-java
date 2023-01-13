@@ -27,4 +27,17 @@ public class PersonService {
 	public Person insert(Person obj) {
 		return personRepository.save(obj);
 	}
+	
+	public Person update(Long id, Person obj) {
+		Person entity = personRepository.getReferenceById(id);
+		updateData(entity, obj);
+		return personRepository.save(entity);
+	}
+
+	private void updateData(Person entity, Person obj) {
+		entity.setNome(obj.getNome());
+		entity.setDataNascimento(obj.getDataNascimento());
+	}
+	
+	
 }
